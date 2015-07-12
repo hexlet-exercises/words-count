@@ -1,5 +1,7 @@
 # word-count
 
+[![Build Status](https://travis-ci.org/hexlet-exercises/words-count.svg)](https://travis-ci.org/hexlet-exercises/words-count)
+
 ## Задача
 Реализовать функцию, которая принимает на вход строку и возвращает число слов в этой строке.
 Слова разделены пробелами (и возможно не одним), а знаки пунктуации не учитываются.
