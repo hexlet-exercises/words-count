@@ -1,0 +1,8 @@
+{
+    "devDependencies": {
+        "lodash": "*",
+        "gulp": "*",
+        "mocha": "*",
+        "gulp-eslint": "*"
+    }
+}
