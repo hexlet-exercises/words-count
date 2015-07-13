@@ -70,21 +70,32 @@ module.exports = {
   },
 
   functional: function(str) { "use strict";
-    var spaceChar = " ";
-    function wordCount(string, prevChar, counter, first) {
-      var curChar = string.slice(0, 1)
-        , lastString = string.slice(1);
-
-      if (string === "") {
-        return counter;
-      } else {
-        if (curChar !== spaceChar && (prevChar === spaceChar || first)) {
-          counter++;
-        }
-        return wordCount(lastString, curChar, counter);
-      }
+    function isSpaceChar(char) {
+      return char === " ";
     }
-
-    return wordCount(str, " ", 0, true);
+    function isWordStart(currentChar, previousChar, itIsFirstChar) {
+      return !isSpaceChar(currentChar) && (isSpaceChar(previousChar) || itIsFirstChar);
+    }
+    function firstElement(string) {
+      return string.slice(0, 1);
+    }
+    function lastList(string) {
+      return string.slice(1);
+    }
+    function isEnded(string) {
+      return string === "";
+    }
+    function upCounter(args) {
+      args.counter += isWordStart(args.cur, args.prev, args.first) ? 1 : 0;
+      args.prev = args.cur;
+      args.first = false;
+      return args;
+    }
+    function wordCount(args) {
+      args.cur = firstElement(args.string);
+      args.string = lastList(args.string);
+      return isEnded(args.string) ? args.counter : wordCount(upCounter(args));
+    }
+    return wordCount({string: str, cur: " ", prev: " ", counter: 0, first: true});
   }
 };
