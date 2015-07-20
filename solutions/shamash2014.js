@@ -17,7 +17,6 @@ module.exports = {
   },
 
   oop: function(str) { "use strict";
-    
 
     return l.words(str).length;
   },
